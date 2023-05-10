@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './form.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../../redux/operations';
 
 export const Form = () => {
   const dispatch = useDispatch();

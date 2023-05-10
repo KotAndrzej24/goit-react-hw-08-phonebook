@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
-import Form from './Form/Form';
-import ContactList from './ContactList/ContactList';
-import Find from './Find/Find';
+import { useEffect, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Layout } from './Layout';
 import { fetchContacts } from 'redux/operations';
+
+const HomePage = lazy(() => import('./pages/Home/Home'));
+const RegisterPage = lazy(() => import('./pages/Register/Register'));
+const LoginPage = lazy(() => import('./pages/Login/Login'));
 
 export function App() {
   const dispatch = useDispatch();
@@ -15,28 +18,12 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-        flexDirection: 'column',
-      }}
-    >
-      <h1>Phonebook</h1>
-      <Form />
-      <Find />
-      <h2
-        style={{
-          margin: 15,
-        }}
-      >
-        Contacts
-      </h2>
-      <ContactList />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={HomePage} />
+        <Route path="/register" element={RegisterPage} />
+        <Route path="/login" element={LoginPage} />
+      </Route>
+    </Routes>
   );
 }
