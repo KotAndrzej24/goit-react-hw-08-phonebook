@@ -7,7 +7,7 @@ import { fetchContacts } from 'redux/operations';
 
 export function App() {
   const dispatch = useDispatch();
- 
+
   // ComponentDidUpdate
 
   useEffect(() => {
