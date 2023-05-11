@@ -1,13 +1,8 @@
-import Form from './Form';
-import ContactList from './ContactList';
-import Find from './Find';
-import { useDispatch } from 'react-redux';
-
-import { useEffect } from 'react';
+import Form from 'components/Form/Form';
+import Find from 'components/Find/Find';
+import ContactList from 'components/ContactList/ContactList';
 
 export function Phonebook() {
-  const dispatch = useDispatch();
-
   return (
     <div
       style={{
