@@ -2,8 +2,12 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const api = axios.create({
-  baseURL: 'https://6456a11e2e41ccf16921ceb0.mockapi.io/',
+  baseURL: 'https://connections-api.herokuapp.com/',
 });
+
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
@@ -21,8 +25,9 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const { name, phone } = contact;
-      const res = await api.post('/contacts', { name, phone });
+      const { name, number } = contact;
+      const res = await api.post('/contacts', { name, number });
+      setAuthHeader(res.data.token);
       const state = thunkAPI.getState();
       const list = state.manageContacts.items;
       const isName = list.find(el => {
@@ -41,9 +46,10 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (id, thunkAPI) => {
+  async (contactId, thunkAPI) => {
     try {
-      const res = await api.delete(`/contacts/${id}`);
+      const res = await api.delete(`/contacts/${contactId}`);
+      setAuthHeader(res.data.token);
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
