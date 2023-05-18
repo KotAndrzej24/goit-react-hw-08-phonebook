@@ -27,6 +27,7 @@ export function Contacts() {
       <h1>Phonebook</h1>
       <Form />
       <Find />
+
       <h2
         style={{
           margin: 15,

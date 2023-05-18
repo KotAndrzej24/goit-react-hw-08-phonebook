@@ -10,8 +10,8 @@ export const Form = () => {
     e.preventDefault();
     const input = e.target;
     const name = input.elements.name.value;
-    const phone = input.elements.number.value;
-    dispatch(addContact({ name, phone }));
+    const number = input.elements.number.value;
+    dispatch(addContact({ name, number }));
     input.reset();
   };
 

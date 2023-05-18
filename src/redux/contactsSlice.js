@@ -7,9 +7,6 @@ const contactsSlice = createSlice({
   initialState: { items: [], status: 'Idle', error: null, filter: '' },
 
   extraReducers: builder => {
-    builder.addCase(fetchContacts.pending, state => {
-      state.status = 'Loading';
-    });
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
       state.items = action.payload;
       state.status = 'Finished';

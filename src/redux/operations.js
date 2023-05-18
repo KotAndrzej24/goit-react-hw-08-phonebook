@@ -1,20 +1,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const api = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com/',
-});
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, thunkAPI) => {
     try {
-      const response = await api.get('/contacts');
-      return response.data;
+      const res = await axios.get('/contacts');
+
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -26,18 +21,18 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const { name, number } = contact;
-      const res = await api.post('/contacts', { name, number });
-      setAuthHeader(res.data.token);
       const state = thunkAPI.getState();
       const list = state.manageContacts.items;
       const isName = list.find(el => {
         return el.name.toLowerCase() === name.toLowerCase();
       });
       if (isName) {
-        alert(`${res.data.name} is already in contacts`);
+        alert(`${list.name} is already in contacts`);
         return thunkAPI.rejectWithValue();
+      } else {
+        const res = await axios.post('/contacts', { name, number });
+        return res.data;
       }
-      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -48,8 +43,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      const res = await api.delete(`/contacts/${contactId}`);
-      setAuthHeader(res.data.token);
+      const res = await axios.delete(`/contacts/${contactId}`);
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

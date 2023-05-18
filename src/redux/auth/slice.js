@@ -1,4 +1,4 @@
-import { logIn, logOut, register } from './operations';
+import { logIn, logOut, refreshUser, register } from './operations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -14,15 +14,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
-    builder.addCase(register.pending, (state, action) => {
-      console.log(state.user);
-      console.log(action);
+    //Register
+    builder.addCase(register.pending, state => {
       state.isRefreshing = true;
       state.error = null;
     });
-    builder.addCase(register.fulfilled, (state, action) => {
-      console.log(state);
-      console.log(action);
+    builder.addCase(register.fulfilled, state => {
       state.isRefreshing = false;
       state.error = null;
     });
@@ -30,16 +27,12 @@ const authSlice = createSlice({
       state.error = action.payload;
       state.isRefreshing = false;
     });
-
-    builder.addCase(logIn.pending, (state, action) => {
-      console.log(state.user);
-      console.log(action);
+    //LogIn
+    builder.addCase(logIn.pending, state => {
       state.isRefreshing = true;
       state.error = null;
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
-      console.log(state.user);
-      console.log(action);
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
@@ -50,21 +43,32 @@ const authSlice = createSlice({
       state.error = action.payload;
       state.isRefreshing = false;
     });
-
-    builder.addCase(logOut.pending, (state, action) => {
-      console.log(state.user);
-      console.log(action);
-      state.isRefreshing = true;
+    //LogOut
+    builder.addCase(logOut.pending, state => {
+      state.isRefreshing = false;
       state.error = null;
     });
-    builder.addCase(logOut.fulfilled, (state, action) => {
-      console.log(state.user);
-      console.log(action);
+    builder.addCase(logOut.fulfilled, state => {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
       state.isRefreshing = false;
       state.error = null;
     });
     builder.addCase(logOut.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    //refreshUser
+    builder.addCase(refreshUser.pending, state => {
+      state.isRefreshing = true;
+    });
+    builder.addCase(refreshUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+      state.isRefreshing = false;
+    });
+    builder.addCase(refreshUser.rejected, state => {
       state.isRefreshing = false;
     });
   },
