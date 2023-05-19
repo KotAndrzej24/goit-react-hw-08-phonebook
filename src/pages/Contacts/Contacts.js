@@ -13,28 +13,10 @@ export function Contacts() {
   }, [dispatch]);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-        flexDirection: 'column',
-      }}
-    >
+    <div>
       <h1>Phonebook</h1>
       <Form />
       <Find />
-
-      <h2
-        style={{
-          margin: 15,
-        }}
-      >
-        Contacts
-      </h2>
       <ContactList />
     </div>
   );

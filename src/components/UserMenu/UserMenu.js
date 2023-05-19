@@ -9,9 +9,10 @@ export function UserMenu() {
 
   return (
     <div className={css.userMenuBox}>
-      <h3>Welcome</h3>
-      <p>{user.name}</p>
-
+      <div>
+        <h3>Welcome</h3>
+        <p>{user.name}</p>
+      </div>
       <button type="button" onClick={() => dispatch(logOut())}>
         Logout
       </button>
