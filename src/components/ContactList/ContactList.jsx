@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../../redux/operations';
 import { getContacts, getFilter } from 'redux/selectors';
 import { Button } from '@mui/material';
-
 import DeleteIcon from '@mui/icons-material/Delete';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,16 @@ const ContactList = () => {
   );
 
   return (
-    <ul>
+    <List
+      sx={{
+        width: 250,
+        display: 'inline-block',
+        textAlign: 'left',
+      }}
+    >
       {filtered.map(el => (
-        <li key={el.id}>
-          <p>{el.name}</p>
-          <p>{el.number}</p>
+        <ListItem key={el.id}>
+          <ListItemText primary={el.name} secondary={el.number} />
           <Button
             variant="contained"
             size="small"
@@ -42,9 +48,9 @@ const ContactList = () => {
           >
             Delete
           </Button>
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

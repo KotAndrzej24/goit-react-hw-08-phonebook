@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
-import List from '@mui/material/List';
 import { Typography } from '@mui/material';
 
 export function Contacts() {
@@ -16,7 +15,7 @@ export function Contacts() {
   }, [dispatch]);
 
   return (
-    <Box>
+    <Box sx={{ my: 4 }}>
       <Typography variant="h3">Phonebook</Typography>
       <Form />
       <Find />

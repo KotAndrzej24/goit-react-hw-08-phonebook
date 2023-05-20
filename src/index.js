@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <ThemeProvider theme={theme}>
             <Container
               maxWidth="false"
-              disableGutters="true"
+              disableGutters={true}
               sx={{ bgcolor: 'primary.main' }}
             >
               <Box
