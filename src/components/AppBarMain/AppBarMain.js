@@ -18,7 +18,8 @@ export const AppBarMain = () => {
             sx={{
               px: 0,
               display: 'flex',
-              justifyContent: 'flex-start',
+              justifyContent: 'space-between',
+              alignItems: 'center',
               gap: 5,
             }}
           >

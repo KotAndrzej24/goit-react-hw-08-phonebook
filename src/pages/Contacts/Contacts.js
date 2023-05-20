@@ -4,6 +4,9 @@ import ContactList from 'components/ContactList/ContactList';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
+import { Box } from '@mui/material';
+import List from '@mui/material/List';
+import { Typography } from '@mui/material';
 
 export function Contacts() {
   const dispatch = useDispatch();
@@ -13,11 +16,11 @@ export function Contacts() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <Box>
+      <Typography variant="h3">Phonebook</Typography>
       <Form />
       <Find />
       <ContactList />
-    </div>
+    </Box>
   );
 }

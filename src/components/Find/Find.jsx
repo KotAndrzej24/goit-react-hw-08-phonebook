@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from './find.module.css';
+
 import { useDispatch } from 'react-redux';
 import { setStatusFilter } from 'redux/filterSlice';
 
@@ -13,7 +13,7 @@ const Find = () => {
 
   return (
     <>
-      <p className={css.filter}>Find Person</p>
+      <p>Find Person</p>
       <input
         onChange={filterHandler}
         type="text"

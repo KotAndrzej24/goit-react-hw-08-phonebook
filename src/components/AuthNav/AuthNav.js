@@ -1,16 +1,30 @@
 import { Box } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
+import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const AuthNav = () => {
   return (
     <Box sx={{ gap: 5, display: 'flex' }}>
-      <Link component={RouterLink} to="/register">
+      <Button
+        variant="contained"
+        sx={{
+          ':hover': { bgcolor: 'secondary.light' },
+        }}
+        component={NavLink}
+        to="/register"
+      >
         Register
-      </Link>
-      <Link component={RouterLink} to="/login">
+      </Button>
+      <Button
+        variant="contained"
+        sx={{
+          ':hover': { bgcolor: 'secondary.light' },
+        }}
+        component={NavLink}
+        to="/login"
+      >
         Log In
-      </Link>
+      </Button>
     </Box>
   );
 };

@@ -71,7 +71,6 @@ export const RegisterForm = () => {
           label="Email Address"
           name="email"
           autoComplete="email"
-          autoFocus
           color="secondary"
           sx={{ color: 'primary.main' }}
         />
@@ -97,7 +96,7 @@ export const RegisterForm = () => {
             ':hover': { bgcolor: 'secondary.light' },
           }}
         >
-          Sign In
+          Register
         </Button>
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks/useAuth';
 import { Box } from '@mui/material';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
@@ -9,13 +9,27 @@ export const Navigation = () => {
   return (
     <Box>
       {isLoggedIn ? (
-        <Link component={RouterLink} to="/contacts">
+        <Button
+          variant="contained"
+          sx={{
+            ':hover': { bgcolor: 'secondary.light' },
+          }}
+          component={NavLink}
+          to="/contacts"
+        >
           Phonebook
-        </Link>
+        </Button>
       ) : (
-        <Link component={RouterLink} to="/">
+        <Button
+          variant="contained"
+          sx={{
+            ':hover': { bgcolor: 'secondary.light' },
+          }}
+          component={NavLink}
+          to="/"
+        >
           Home
-        </Link>
+        </Button>
       )}
     </Box>
   );
