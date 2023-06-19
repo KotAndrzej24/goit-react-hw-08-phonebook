@@ -1,6 +1,6 @@
 # Phonebook-in-React
 
-This repository contains a React-based project for finding images. It provides a user-friendly interface to search for images using various search terms.
+This repository contains a React-based project for finding images. It provides a user-friendly interface to search for images using various search terms. It is possible to sign in and sign up because of backend mockapi.io.
 
 ## Technologies Used
 
