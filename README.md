@@ -16,7 +16,7 @@ You can check out the live demo of the web page ~[here](https://qube24.github.io
 
 ## Usage
 
- 1. Clone the repository:
+1. Clone the repository:
    
      ```git clone https://github.com/Qube24/Phonebook-in-React.git```
       
