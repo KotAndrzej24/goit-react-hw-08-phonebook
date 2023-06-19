@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "Phonebook-in-React",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://KotAndrzej24.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://qube24.github.io/Phonebook-in-React/",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
